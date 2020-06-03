@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="4dp">
 
     <RelativeLayout
@@ -11,55 +11,80 @@
         android:layout_margin="4dp">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="2dp"
-            android:id="@+id/imageView"/>
+            android:padding="2dp" />
 
         <TextView
+            android:id="@+id/bookName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imageView"
             android:text="Book name"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/imageView"
-            android:id="@+id/bookName"/>
+            />
 
         <TextView
             android:id="@+id/bookGenres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Genres:"
             android:layout_below="@+id/bookName"
             android:layout_toEndOf="@+id/imageView"
-            android:textStyle="bold"/>
+            android:text="Genres:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bookGenresPlaceholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookName"
+            android:layout_toEndOf="@+id/bookGenres"
+            android:text="Example" />
 
         <TextView
             android:id="@+id/bookPagesCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pages:"
             android:layout_below="@+id/bookGenres"
             android:layout_toEndOf="@+id/imageView"
-            android:textStyle="bold"/>
+            android:text="Pages:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bookPagesCountPlaceholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookGenres"
+            android:layout_toEndOf="@+id/bookPagesCount"
+            android:text="100" />
 
         <TextView
             android:id="@+id/bookAuthors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Author(s):"
             android:layout_below="@+id/bookPagesCount"
             android:layout_toEndOf="@+id/imageView"
-            android:textStyle="bold"/>
+            android:text="Author(s):"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bookAuthorsPlaceholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookPagesCount"
+            android:layout_toEndOf="@+id/bookAuthors"
+            android:text="Robert Downey Jr." />
 
         <TextView
             android:id="@+id/bookDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
             android:layout_below="@+id/bookAuthors"
-            android:layout_toEndOf="@+id/imageView"/>
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Description" />
 
     </RelativeLayout>
 
