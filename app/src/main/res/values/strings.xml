@@ -16,4 +16,6 @@
     <string name="register">Register</string>
     <string name="display_name_hint">Display Name</string>
     <string name="password_hint">Password</string>
+    <string name="navigation_draw_open">Open navigation draw</string>
+    <string name="navigation_draw_close">Close navigation draw</string>
 </resources>

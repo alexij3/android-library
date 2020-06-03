@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "379645202887",
+    "firebase_url": "https://library-ce64c.firebaseio.com",
+    "project_id": "library-ce64c",
+    "storage_bucket": "library-ce64c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379645202887:android:956f261a1933f722ec09e2",
+        "android_client_info": {
+          "package_name": "com.buzilov.library"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379645202887-dgn0t9981128g5g5k24fqm1s9if7mp29.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.buzilov.library",
+            "certificate_hash": "756589e2e35b8e0f2968d035342fe9f9862bd3ee"
+          }
+        },
+        {
+          "client_id": "379645202887-ohfa4ueq4lhkn1fm6i0bhm2kbi6i4hdi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5xBc3vyrvTQ45f6mEVqLCrKIOy8S48og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "379645202887-ohfa4ueq4lhkn1fm6i0bhm2kbi6i4hdi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

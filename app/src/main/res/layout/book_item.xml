@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp"
+            android:id="@+id/imageView"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imageView"
+            android:id="@+id/bookName"/>
+
+        <TextView
+            android:id="@+id/bookGenres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Genres:"
+            android:layout_below="@+id/bookName"
+            android:layout_toEndOf="@+id/imageView"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/bookPagesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pages:"
+            android:layout_below="@+id/bookGenres"
+            android:layout_toEndOf="@+id/imageView"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/bookAuthors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Author(s):"
+            android:layout_below="@+id/bookPagesCount"
+            android:layout_toEndOf="@+id/imageView"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/bookDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:layout_below="@+id/bookAuthors"
+            android:layout_toEndOf="@+id/imageView"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
