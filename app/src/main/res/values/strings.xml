@@ -31,4 +31,5 @@
     <string name="save_book">Save book</string>
     <string name="addBook">Add book</string>
     <string name="add_edit_book">Add/Edit book</string>
+    <string name="prefs_url">MY_PREFS</string>
 </resources>

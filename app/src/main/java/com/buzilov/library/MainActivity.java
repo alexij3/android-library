@@ -9,6 +9,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -24,17 +27,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private FirebaseAuth auth;
-    private FirebaseFirestore database;
     private DrawerLayout drawerLayout;
+    private TextView displayName;
+    private TextView email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        auth = FirebaseAuth.getInstance();
-        database = FirebaseFirestore.getInstance();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,7 +42,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.navigation_draw_open, R.string.navigation_draw_close);
+                R.string.navigation_draw_open, R.string.navigation_draw_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                displayName = drawerView.findViewById(R.id.navDisplayName);
+                email = drawerView.findViewById(R.id.navEmail);
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.prefs_url), Context.MODE_PRIVATE);
+                displayName.setText(sharedPreferences.getString("displayName", "Unknown"));
+                email.setText(sharedPreferences.getString("email", "unknown@gmail.com"));
+            }
+        };
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -78,5 +88,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void logout(MenuItem item) {
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.prefs_url), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("authenticated", false);
+        editor.remove("email");
+        editor.remove("displayName");
+        Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }

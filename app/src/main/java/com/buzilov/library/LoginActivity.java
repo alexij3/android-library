@@ -1,6 +1,8 @@
 package com.buzilov.library;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -8,11 +10,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.buzilov.library.db.service.AuthenticationService;
+import com.buzilov.library.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private FirebaseAuth firebaseAuth;
     private EditText emailText, passwordText;
 
     @Override
@@ -23,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
         emailText = findViewById(R.id.loginEmail);
         passwordText = findViewById(R.id.loginPassword);
 
-        firebaseAuth = FirebaseAuth.getInstance();
     }
 
     public void createAccount(View view) {
@@ -31,16 +33,22 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        String email = emailText.getText().toString(),
+        final String email = emailText.getText().toString(),
                 password = passwordText.getText().toString();
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener((task) -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(this, "Successfully logged in!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, MainActivity.class));
-                    } else {
-                        Toast.makeText(this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+        final AuthenticationService authenticationService = new AuthenticationService();
+        User user = authenticationService.authenticateUser(email, password);
+        if (user != null) {
+            SharedPreferences prefs = getSharedPreferences(getString(R.string.prefs_url), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("authenticated", true);
+            editor.putString("email", email);
+            editor.putString("displayName", user.getDisplayName());
+            editor.apply();
+            Toast.makeText(this, "Successfully authenticated!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
+            Toast.makeText(this, "Bad credentials", Toast.LENGTH_SHORT).show();
+        }
     }
 }
