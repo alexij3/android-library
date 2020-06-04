@@ -8,7 +8,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp">
+        android:layout_margin="4dp"
+        android:id="@+id/bookItemLayout">
+
+        <ImageView
+            android:id="@+id/editBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
+            android:layout_below="@+id/imageView"/>
+        <ImageView
+            android:id="@+id/deleteBook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:layout_below="@+id/imageView"
+            android:layout_toEndOf="@+id/editBook"/>
 
         <ImageView
             android:id="@+id/imageView"
@@ -45,10 +60,27 @@
             android:text="Example" />
 
         <TextView
-            android:id="@+id/bookPagesCount"
+            android:id="@+id/bookYear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/bookGenres"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Year:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bookYearPlaceholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookGenres"
+            android:layout_toEndOf="@+id/bookYear"
+            android:text="2020" />
+
+        <TextView
+            android:id="@+id/bookPagesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookYear"
             android:layout_toEndOf="@+id/imageView"
             android:text="Pages:"
             android:textStyle="bold" />
@@ -57,7 +89,7 @@
             android:id="@+id/bookPagesCountPlaceholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bookGenres"
+            android:layout_below="@+id/bookYear"
             android:layout_toEndOf="@+id/bookPagesCount"
             android:text="100" />
 

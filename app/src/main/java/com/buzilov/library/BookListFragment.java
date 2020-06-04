@@ -16,10 +16,7 @@ import com.buzilov.library.db.repository.BooksRepository;
 import com.buzilov.library.dto.Book;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BookListFragment extends Fragment {
 

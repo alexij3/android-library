@@ -2,7 +2,7 @@ package com.buzilov.library.db.table;
 
 public class Users {
 
-    private static final String TABLE_NAME = "users";
+    public static final String TABLE_NAME = "users";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_PASSWORD = "password";

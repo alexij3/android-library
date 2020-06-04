@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
             case R.id.nav_books:
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.drawer_layout, new BookListFragment())
+                        .replace(R.id.fragment_container, new BookListFragment())
+                        .addToBackStack(null)
                         .commit();
                 break;
 
