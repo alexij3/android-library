@@ -29,4 +29,6 @@
     <string name="placeholder_year">Year</string>
     <string name="placeholder_pages">Pages</string>
     <string name="save_book">Save book</string>
+    <string name="addBook">Add book</string>
+    <string name="add_edit_book">Add/Edit book</string>
 </resources>

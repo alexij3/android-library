@@ -2,7 +2,7 @@ package com.buzilov.library.dto;
 
 public class Book {
 
-    private Integer id;
+    private Long id;
     private String title;
     private String description;
     private String genres;
@@ -19,7 +19,7 @@ public class Book {
         this.year = year;
     }
 
-    public Book(Integer id, String title, String description, String genres, String authors, Integer pagesCount, Integer year) {
+    public Book(Long id, String title, String description, String genres, String authors, Integer pagesCount, Integer year) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -29,11 +29,11 @@ public class Book {
         this.year = year;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
