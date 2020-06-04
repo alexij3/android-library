@@ -11,9 +11,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.buzilov.library.db.DatabaseHelper;
+import com.buzilov.library.db.repository.BooksRepository;
+import com.buzilov.library.dto.Book;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookListFragment extends Fragment {
 
@@ -31,16 +37,19 @@ public class BookListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_books_list, container, false);
 
-        List<BookItem> books = Arrays.asList(
-                new BookItem(R.drawable.ic_book_item, "Mega book 1", Collections.singletonList("Sci-Fi"), Arrays.asList("Me", "You"), 100, "A very beautiful book number 1"),
-                new BookItem(R.drawable.ic_book_item, "Mega book 2", Collections.singletonList("Sci-Fi"), Arrays.asList("Me", "123"), 200, "A very beautiful book number 2"),
-                new BookItem(R.drawable.ic_book_item, "Mega book 3", Collections.singletonList("Sci-Fi"), Arrays.asList("Me", "456"), 300, "A very beautiful book number 3"),
-                new BookItem(R.drawable.ic_book_item, "Mega book 4", Collections.singletonList("Sci-Fi"), Arrays.asList("Me", "789"), 400, "A very beautiful book number 4")
-        );
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        BooksRepository booksRepository = new BooksRepository(databaseHelper);
+
+        List<Book> books = booksRepository.getAll();
+        List<BookItem> bookItems = new ArrayList<>();
+
+        for (Book book : books) {
+            bookItems.add(BookItem.from(book));
+        }
 
         recyclerView = view.findViewById(R.id.booksRecyclerView);
         layoutManager = new LinearLayoutManager(getContext());
-        adapter = new BookListRecycleViewAdapter(books);
+        adapter = new BookListRecycleViewAdapter(bookItems);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

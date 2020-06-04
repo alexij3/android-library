@@ -33,8 +33,8 @@ public class BookListRecycleViewAdapter extends RecyclerView.Adapter<BookListRec
         holder.imageView.setImageResource(currentItem.getImageResource());
         holder.description.setText(currentItem.getDescription());
         holder.pagesCountPlaceholder.setText(String.valueOf(currentItem.getPages()));
-        holder.authorsPlaceholder.setText(currentItem.getAuthorsListAsString());
-        holder.genresPlaceholder.setText(currentItem.getGenresListAsString());
+        holder.authorsPlaceholder.setText(currentItem.getAuthors());
+        holder.genresPlaceholder.setText(currentItem.getGenres());
         holder.name.setText(currentItem.getName());
     }
 
